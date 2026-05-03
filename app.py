@@ -1,5 +1,9 @@
-def test_home():
-    client = app.test_client()
-    response = client.get("/")
-    assert response.status_code == 200
-    assert b"Hello this is submitted by Mayank" in response.data
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Hello this is submitted by Mayank"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
